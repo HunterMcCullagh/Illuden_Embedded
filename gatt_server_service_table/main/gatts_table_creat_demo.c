@@ -452,6 +452,8 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
             ESP_LOGI(GATTS_TABLE_TAG, "GATT_WRITE_EVT, handle = %d, value len = %d, value : ", param->write.handle, param->write.len);
             ESP_LOG_BUFFER_HEX(GATTS_TABLE_TAG, param->write.value, param->write.len);
 
+            process_app_data(param->write.value, param->write.len);
+
             if (param->write.need_rsp) {
                 esp_gatt_rsp_t rsp;
                 memset(&rsp, 0, sizeof(esp_gatt_rsp_t));
@@ -613,4 +615,64 @@ void app_main(void)
     if (local_mtu_ret){
         ESP_LOGE(GATTS_TABLE_TAG, "set local  MTU failed, error code = %x", local_mtu_ret);
     }
+}
+
+//Process data sent from app, data is structured in accordance to documentation
+void process_app_data(uint8_t data[],int data_size)
+{
+    uint8_t command = data[COMMAND_BYTE] & COMMAND_MASK;
+
+    if(command == SINGLE_WRITE_COMMAND)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "SINGLE_WRITE_COMMAND");
+        uint8_t I2C_address = data[1] & I2C_ADDRESS_MASK;
+
+        uint8_t LED_data[LED_DATA_LENGTH];
+        memcpy(LED_data,&data[2],LED_DATA_LENGTH);
+
+        //send data over I2C
+    }
+    else if(command == MULTIPLE_WRITE_COMMAND)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "MULTIPLE_WRITE_COMMAND");
+        uint8_t num_modules = (data_size -1)/LED_DATA_AND_ADDRESS_LENGTH;
+        uint8_t I2C_addresses[num_modules];
+        uint8_t LED_data[num_modules*LED_DATA_LENGTH];
+
+        for(int x = 0; x<num_modules; x++)
+        {
+            I2C_addresses[x] = data[1+x*LED_DATA_AND_ADDRESS_LENGTH] & I2C_ADDRESS_MASK;
+            memcpy(&LED_data[x*LED_DATA_LENGTH],&data[2+x*LED_DATA_AND_ADDRESS_LENGTH],LED_DATA_LENGTH);
+
+            //send data over I2C
+        }
+    }
+    else if(command == IDENTICAL_WRITE_COMMAND)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "IDENTICAL_WRITE_COMMAND");
+        uint8_t num_modules = (data_size - LED_DATA_AND_ADDRESS_LENGTH);
+        uint8_t LED_data[LED_DATA_LENGTH];
+        memcpy(LED_data,&data[1],LED_DATA_LENGTH);
+
+        for(int x = 0; x<num_modules; x++)
+        {
+            //Send data over I2C
+            return;
+        }
+        
+    }
+    else if(command == SINGLE_READ_COMMAND)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "SINGLE_READ_COMMAND");
+        uint8_t I2C_address = data[1] & I2C_ADDRESS_MASK;
+        //read data from I2C 
+    }
+    else if(command == FULL_READ_COMMAND)
+    {
+        ESP_LOGI(GATTS_TABLE_TAG, "FULL_READ_COMMAND");
+        //perform I2C scan to see number of modules, read data from each module
+        return;
+    }
+
+    return;
 }
