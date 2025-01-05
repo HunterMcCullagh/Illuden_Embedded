@@ -1,0 +1,46 @@
+Altium Designer Pick and Place Locations
+C:\Users\Public\Documents\Altium\Projects\Capstone_LED_Validation_Board_v1_3\Project Outputs for Capstone_LED_Validation_Boardv1_3\Pick Place\Pick Place for LED_Validation_Board.csv
+
+========================================================================================================================
+File Design Information:
+
+Date:       15-11-24
+Time:       19:05
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+"Designator","Center-X(mil)","Center-Y(mil)","Layer","Rotation"
+"J9","1440.000","1850.000","TopLayer","180"
+"J8","800.000","970.000","TopLayer","180"
+"J7","1570.000","380.000","TopLayer","180"
+"J1","1090.000","1950.000","TopLayer","180"
+"U1","2050.000","700.000","TopLayer","0"
+"U2","1043.307","1774.409","TopLayer","180"
+"U3","1437.087","2049.488","TopLayer","0"
+"U6","1130.000","2330.000","TopLayer","180"
+"U5","2060.000","2000.000","TopLayer","180"
+"U4","2040.000","2380.000","TopLayer","180"
+"U8","651.063","680.315","TopLayer","180"
+"U7","1499.724","170.157","TopLayer","0"
+"D1","1772.520","2360.000","TopLayer","180"
+"J6","2234.000","200.000","TopLayer","180"
+"J2","522.000","200.000","TopLayer","180"
+"J3","2050.000","1250.000","TopLayer","0"
+"J5","880.000","1300.000","TopLayer","180"
+"J4","3110.000","850.000","TopLayer","90"
+"R3","530.000","590.000","TopLayer","0"
+"D2","1770.000","2000.000","TopLayer","180"
+"R2","2160.000","500.000","TopLayer","270"
+"R1","2250.000","570.000","TopLayer","270"
+"D3","1407.480","2360.000","TopLayer","0"
+"C5","1271.457","170.000","TopLayer","0"
+"L1","620.000","810.000","TopLayer","0"
+"C1","1788.543","670.000","TopLayer","0"
+"C8","820.000","758.543","TopLayer","90"
+"C7","760.000","758.543","TopLayer","90"
+"C6","780.000","600.000","TopLayer","270"
+"C4","1240.000","80.000","TopLayer","0"
+"R4","648.543","590.000","TopLayer","0"
+"C3","480.000","744.252","TopLayer","90"
+"C2","1788.543","610.000","TopLayer","0"

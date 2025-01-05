@@ -1,0 +1,10 @@
+Output: Bill of Materials
+Type  : BOM
+From  : Variant [[No Variations]] of Project [Capstone_LED_Validation_Boardv1_3.PrjPcb]
+   Generated File[Bill of Materials-Capstone_LED_Validation_Boardv1_3.xlsx]
+
+
+Files Generated   : 1
+Documents Printed : 0
+
+Finished Output Generation At 7:05:55 PM On 2024-11-15
