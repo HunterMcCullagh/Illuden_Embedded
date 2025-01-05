@@ -8,6 +8,8 @@ A screenshot of the inital prototype can be seen in the figure below, the end go
 
 ![2D PCB](https://github.com/user-attachments/assets/bb245036-64c4-4bfe-9740-7deca733997b)
 
-The ESP32 in this project acts as a Bluetooth device for an iOS device to connect to with the app we are developing. Additionally the ESP32 functions as an I2C controller, sending lighting commands to all the LED modules
+The ESP32 in this project acts as a Bluetooth device for an iOS device to connect to with the app we are developing. Additionally the ESP32 functions as an I2C controller, sending lighting commands to all the LED modules.
+
+Currently ESP32 Development can be seen on other branches.
 
 
