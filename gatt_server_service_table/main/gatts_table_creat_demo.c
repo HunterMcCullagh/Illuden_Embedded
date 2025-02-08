@@ -30,6 +30,8 @@
 #include "gatts_table_creat_demo.h"
 #include "esp_gatt_common_api.h"
 
+#include "i2c_driver.h"
+
 #define GATTS_TABLE_TAG "GATTS_TABLE_DEMO"
 
 #define PROFILE_NUM                 1
@@ -568,6 +570,9 @@ void app_main(void)
 
     ESP_ERROR_CHECK(esp_bt_controller_mem_release(ESP_BT_MODE_CLASSIC_BT));
 
+    //init i2c
+    i2c_master_init();
+
     esp_bt_controller_config_t bt_cfg = BT_CONTROLLER_INIT_CONFIG_DEFAULT();
     ret = esp_bt_controller_init(&bt_cfg);
     if (ret) {
@@ -631,6 +636,7 @@ void process_app_data(uint8_t data[],int data_size)
         memcpy(LED_data,&data[2],LED_DATA_LENGTH);
 
         //send data over I2C
+        LEDWriteRegs(I2C_address,LED_data,LED_DATA_LENGTH);
     }
     else if(command == MULTIPLE_WRITE_COMMAND)
     {
@@ -671,6 +677,7 @@ void process_app_data(uint8_t data[],int data_size)
     {
         ESP_LOGI(GATTS_TABLE_TAG, "FULL_READ_COMMAND");
         //perform I2C scan to see number of modules, read data from each module
+        i2c_scan();
         return;
     }
 

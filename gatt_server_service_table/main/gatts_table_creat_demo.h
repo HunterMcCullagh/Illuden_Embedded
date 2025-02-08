@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "i2c_driver.h"
 
 #define COMMAND_BYTE                0x00    //Position of command data
 #define COMMAND_MASK                0xFF    //Byte Mask for command data
