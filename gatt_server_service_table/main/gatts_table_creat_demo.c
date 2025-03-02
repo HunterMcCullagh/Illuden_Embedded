@@ -659,12 +659,17 @@ void process_app_data(uint8_t data[],int data_size)
         uint8_t num_modules = (data_size - LED_DATA_AND_ADDRESS_LENGTH);
         uint8_t LED_data[LED_DATA_LENGTH];
         memcpy(LED_data,&data[1],LED_DATA_LENGTH);
+        uint8_t I2C_address;
 
         for(int x = 0; x<num_modules; x++)
         {
             //Send data over I2C
-            return;
+            I2C_address = data[LED_DATA_LENGTH + 1 + x];
+            printf("Writing to device address: %x with data %x,%x,%x,%x,%x,%x\n", I2C_address,
+                LED_data[0],LED_data[1],LED_data[2],LED_data[3],LED_data[4],LED_data[5]);
+            LEDWriteRegs(I2C_address,LED_data,LED_DATA_LENGTH);
         }
+        return;
         
     }
     else if(command == SINGLE_READ_COMMAND)

@@ -8,8 +8,8 @@
 #include "freertos/task.h"
 
 #define I2C_MASTER_NUM I2C_NUM_0        // I2C port number
-#define I2C_MASTER_SCL_IO 19           // GPIO for SCL
-#define I2C_MASTER_SDA_IO 18           // GPIO for SDA
+#define I2C_MASTER_SCL_IO 9           // GPIO for SCL was 19
+#define I2C_MASTER_SDA_IO 8           // GPIO for SDA was 18
 #define I2C_MASTER_FREQ_HZ 100000      // Frequency in Hz (100 kHz standard)
 #define I2C_MASTER_TX_BUF_DISABLE 0    // Disable transmit buffer
 #define I2C_MASTER_RX_BUF_DISABLE 0    // Disable receive buffer
