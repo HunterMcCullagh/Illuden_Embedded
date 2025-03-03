@@ -32,6 +32,7 @@
 
 #include "i2c_driver.h"
 
+
 #define GATTS_TABLE_TAG "GATTS_TABLE_DEMO"
 
 #define PROFILE_NUM                 1
@@ -53,6 +54,7 @@
 static uint8_t adv_config_done       = 0;
 
 uint16_t read_counter = 0;
+int current_adc_data = -1;
 
 uint16_t heart_rate_handle_table[HRS_IDX_NB];
 
@@ -413,14 +415,20 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
         }
        	    break;
         case ESP_GATTS_READ_EVT:
+
+
             read_counter+=1;
-            read_char_value[0] = read_counter;
+            //read_char_value[0] = read_counter;
+
+            read_char_value[0] = (current_adc_data >> 8) & 0xFF;
+            read_char_value[1] = current_adc_data & 0xFF;
+            
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT %d",read_char_value[0]);
             ESP_LOG_BUFFER_HEX(GATTS_TABLE_TAG,write_char_value,10);
 
-            if (param->read.need_rsp) {
-                ESP_LOGI(GATTS_TABLE_TAG, "I REQUIRE A RESPONSE");
-            }
+            // if (param->read.need_rsp) {
+            //     ESP_LOGI(GATTS_TABLE_TAG, "I REQUIRE A RESPONSE");
+            // }
 
 
             esp_gatt_rsp_t rsp;
@@ -684,6 +692,10 @@ void process_app_data(uint8_t data[],int data_size)
         //perform I2C scan to see number of modules, read data from each module
         i2c_scan();
         return;
+    }
+    else if(command == ADC_READ_COMMAND)
+    {
+        current_adc_data = adc_read();
     }
 
     return;

@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "i2c_driver.h"
+#include "adc_driver.h"
 
 #define COMMAND_BYTE                0x00    //Position of command data
 #define COMMAND_MASK                0xFF    //Byte Mask for command data
@@ -28,6 +29,7 @@
 #define IDENTICAL_WRITE_COMMAND     0x03    //Write the same data to multiple LED Modules
 #define SINGLE_READ_COMMAND         0x04    //Read the data from a single LED Module
 #define FULL_READ_COMMAND           0x05    //Get the data from all the LED Modules
+#define ADC_READ_COMMAND            0x06    //Get the data from the ADC
 
 
 /* Attributes State Machine */
