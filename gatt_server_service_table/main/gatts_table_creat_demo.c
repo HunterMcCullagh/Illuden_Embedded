@@ -462,7 +462,7 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
             ESP_LOGI(GATTS_TABLE_TAG, "GATT_WRITE_EVT, handle = %d, value len = %d, value : ", param->write.handle, param->write.len);
             ESP_LOG_BUFFER_HEX(GATTS_TABLE_TAG, param->write.value, param->write.len);
 
-            process_app_data(param->write.value, param->write.len);
+            process_app_data(param->write.value, param->write.len); //later store in temp
 
             if (param->write.need_rsp) {
                 esp_gatt_rsp_t rsp;
@@ -673,8 +673,8 @@ void process_app_data(uint8_t data[],int data_size)
         {
             //Send data over I2C
             I2C_address = data[LED_DATA_LENGTH + 1 + x];
-            printf("Writing to device address: %x with data %x,%x,%x,%x,%x,%x\n", I2C_address,
-                LED_data[0],LED_data[1],LED_data[2],LED_data[3],LED_data[4],LED_data[5]);
+            //printf("Writing to device address: %x with data %x,%x,%x,%x,%x,%x\n", I2C_address,
+            //    LED_data[0],LED_data[1],LED_data[2],LED_data[3],LED_data[4],LED_data[5]);
             LEDWriteRegs(I2C_address,LED_data,LED_DATA_LENGTH);
         }
         return;
