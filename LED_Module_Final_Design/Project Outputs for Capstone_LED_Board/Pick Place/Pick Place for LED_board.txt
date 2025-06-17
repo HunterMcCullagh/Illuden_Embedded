@@ -1,0 +1,64 @@
+Altium Designer Pick and Place Locations
+C:\Users\Public\Documents\Altium\Projects\Capstone_LED_Board\Project Outputs for Capstone_LED_Board\Pick Place\Pick Place for LED_board.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       16-03-25
+Time:       14:42
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Designator Center-X(mil) Center-Y(mil) Layer    Rotation 
+TP4        -890.000      -635.000      TopLayer 0        
+TP3        -940.000      -370.000      TopLayer 0        
+TP2        890.000       -390.000      TopLayer 0        
+RGB_SIG    80.000        -410.000      TopLayer 0        
+U2         -340.000      575.000       TopLayer 0        
+U6         480.000       -30.000       TopLayer 0        
+U5         41.457        460.000       TopLayer 90       
+U4         295.000       375.000       TopLayer 0        
+SB9        655.000       -130.000      TopLayer 0        
+SB8        655.000       -60.000       TopLayer 0        
+SB7        655.000       10.000        TopLayer 0        
+SB6        31.457        620.000       TopLayer 0        
+SB5        31.457        690.000       TopLayer 0        
+SB4        31.457        760.000       TopLayer 0        
+SB3        470.000       265.000       TopLayer 0        
+SB2        470.000       335.000       TopLayer 0        
+SB1        470.000       405.000       TopLayer 0        
+R12        815.000       -130.000      TopLayer 180      
+R11        815.000       -60.000       TopLayer 180      
+R10        815.000       10.000        TopLayer 180      
+R9         655.000       120.000       TopLayer 180      
+R8         191.457       620.000       TopLayer 180      
+R7         191.457       690.000       TopLayer 180      
+R6         191.457       760.000       TopLayer 180      
+R5         -88.543       640.000       TopLayer 270      
+R4         630.000       265.000       TopLayer 180      
+R3         630.000       335.000       TopLayer 180      
+R2         630.000       405.000       TopLayer 180      
+R1         470.000       515.000       TopLayer 180      
+U3         -107.087      -79.488       TopLayer 180      
+D3         85.000        -85.000       TopLayer 180      
+D2         -85.000       85.000        TopLayer 0        
+D1         85.000        85.000        TopLayer 180      
+L1         629.105       -603.514      TopLayer 180      
+U1         -190.000      -420.000      TopLayer 270      
+C3         760.000       -530.000      TopLayer 270      
+U8         -615.000      -325.000      TopLayer 90       
+U7         630.000       -480.000      TopLayer 0        
+J2         0.000         -600.000      TopLayer 0        
+J1         -840.000      -10.000       TopLayer 56       
+C7         -570.000      -530.000      TopLayer 0        
+C4         500.000       -367.402      TopLayer 90       
+C8         -784.252      -341.850      TopLayer 90       
+C6         420.000       -520.000      TopLayer 270      
+C5         490.000       -520.000      TopLayer 270      
+R16        632.087       -390.000      TopLayer 180      
+R15        727.913       -390.000      TopLayer 180      
+R14        -410.000      282.913       TopLayer 270      
+R13        -190.000      372.087       TopLayer 270      
+C2         -540.000      460.000       TopLayer 0        
+C1         -540.000      520.000       TopLayer 0        
