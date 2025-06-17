@@ -1,18 +1,6 @@
 /*
- * SPDX-FileCopyrightText: 2021-2023 Espressif Systems (Shanghai) CO LTD
- *
- * SPDX-License-Identifier: Unlicense OR CC0-1.0
+ * File Containing the main code for the ESP32
  */
-
-/****************************************************************************
-*
-* This demo showcases creating a GATT database using a predefined attribute table.
-* It acts as a GATT server and can send adv data, be connected by client.
-* Run the gatt_client demo, the client demo will automatically connect to the gatt_server_service_table demo.
-* Client demo will enable GATT server's notify after connection. The two devices will then exchange
-* data.
-*
-****************************************************************************/
 
 
 #include "freertos/FreeRTOS.h"
@@ -165,9 +153,6 @@ static struct gatts_profile_inst heart_rate_profile_tab[PROFILE_NUM] = {
 
 /* Service */
 static const uint16_t GATTS_SERVICE_UUID_TEST      = 0x00FF;
-//static const uint16_t GATTS_CHAR_UUID_TEST_A       = 0xFF01;
-//static const uint16_t GATTS_CHAR_UUID_TEST_B       = 0xFF02;
-//static const uint16_t GATTS_CHAR_UUID_WRITE       = 0xFF03;
 
 static const uint16_t GATTS_CHAR_READ_UUID        = 0xFF01;
 static const uint16_t GATTS_CHAR_WRITE_UUID       = 0xFF02;
@@ -175,16 +160,8 @@ static const uint16_t GATTS_CHAR_WRITE_UUID       = 0xFF02;
 
 static const uint16_t primary_service_uuid         = ESP_GATT_UUID_PRI_SERVICE;
 static const uint16_t character_declaration_uuid   = ESP_GATT_UUID_CHAR_DECLARE;
-//static const uint16_t character_client_config_uuid = ESP_GATT_UUID_CHAR_CLIENT_CONFIG;
 static const uint8_t char_prop_read                = ESP_GATT_CHAR_PROP_BIT_READ;
 static const uint8_t char_prop_write               = ESP_GATT_CHAR_PROP_BIT_WRITE;
-//static const uint8_t char_prop_read_write_notify   = ESP_GATT_CHAR_PROP_BIT_WRITE | ESP_GATT_CHAR_PROP_BIT_READ | ESP_GATT_CHAR_PROP_BIT_NOTIFY;
-
-
-//Data
-//static const uint8_t heart_measurement_ccc[2]      = {0x86, 0x75};
-// static const uint8_t char_value[4]                 = {0x11, 0x22, 0x33, 0x44};
-// uint8_t led_module_values[10] = {0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x0a};
 
 /* Characteristic Values */
 static uint8_t read_char_value[10] = {0}; // Example: 10 bytes for read value
@@ -418,18 +395,12 @@ static void gatts_profile_event_handler(esp_gatts_cb_event_t event, esp_gatt_if_
 
 
             read_counter+=1;
-            //read_char_value[0] = read_counter;
 
             read_char_value[0] = (current_adc_data >> 8) & 0xFF;
             read_char_value[1] = current_adc_data & 0xFF;
             
             ESP_LOGI(GATTS_TABLE_TAG, "ESP_GATTS_READ_EVT %d",read_char_value[0]);
             ESP_LOG_BUFFER_HEX(GATTS_TABLE_TAG,write_char_value,10);
-
-            // if (param->read.need_rsp) {
-            //     ESP_LOGI(GATTS_TABLE_TAG, "I REQUIRE A RESPONSE");
-            // }
-
 
             esp_gatt_rsp_t rsp;
             memset(&rsp, 0, sizeof(esp_gatt_rsp_t));
@@ -671,10 +642,7 @@ void process_app_data(uint8_t data[],int data_size)
 
         for(int x = 0; x<num_modules; x++)
         {
-            //Send data over I2C
             I2C_address = data[LED_DATA_LENGTH + 1 + x];
-            //printf("Writing to device address: %x with data %x,%x,%x,%x,%x,%x\n", I2C_address,
-            //    LED_data[0],LED_data[1],LED_data[2],LED_data[3],LED_data[4],LED_data[5]);
             LEDWriteRegs(I2C_address,LED_data,LED_DATA_LENGTH);
         }
         return;
