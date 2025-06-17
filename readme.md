@@ -1,6 +1,6 @@
 This repository contains the embedded portion of our Capstone Project, with the final goal to create a dynamic lighting solution.
 
-In this repo there are two main features, the LED Modules & the ESP32.
+In this repo there are two main features, the LED Modules & the ESP32 (in the Gatt Service Table Folder).
 
 The LED Modules contain various light temperature LEDs, LED Drivers & an STM8S microcontroller that controls the LED drivers and acts as an I2C peripheral to receive data from the ESP32. There will be 50 modules attached at various angles on a mechanical frame to emit light in various directions. 
 
